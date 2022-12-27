@@ -1,3 +1,5 @@
+import {RequestInit} from "node-fetch";
+
 export interface TranslateModelResponse{
     text: string;
     raw?: {
@@ -17,8 +19,8 @@ export interface TranslateModelRequest{
     text: string;
     options?: {
         from?: string;
-        to: string;
+        to?: string;
         host?: string;
-        fetchOptions?: string;
+        fetchOptions?: Partial<RequestInit>;
     }
 }

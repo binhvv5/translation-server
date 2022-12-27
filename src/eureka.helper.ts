@@ -1,17 +1,19 @@
 import Eureka from 'eureka-js-client';
-
+import config from "config";
+const port = config.get("port") as number;
+const host = config.get("host") as string;
 // @ts-ignore
-export const client = new Eureka({
+export const clientEureka = new Eureka({
     // application instance information
     instance: {
         app: 'translation-server',
         hostName: 'localhost',
         ipAddr: '127.0.0.1',
         port: {
-            '$': 8080,
+            '$': port,
             '@enabled': true,
         },
-        vipAddress: 'jq.test.something.com',
+        vipAddress: 'translation-server',
         dataCenterInfo: {
             '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
             name: 'MyOwn',
